@@ -5,8 +5,7 @@ using namespace std;
 // Returns count of possible ways for N sections
 int countWays(int N) {
   // Base case
-  if (N == 1)
-    return 4; // 2 for one side and 4 for two sides
+  if (N == 1) return 4; // 2 for one side and 4 for two sides
 
   // countB is count of ways with a building at the end
   // countS is count of ways with a space at the end
