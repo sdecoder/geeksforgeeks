@@ -21,8 +21,7 @@ Node *newNode(int data) {
 // Utility function to print Min-heap level by level
 void printLevelOrder(Node *root) {
   // Base Case
-  if (root == NULL)
-    return;
+  if (root == NULL) return;
 
   // Create an empty queue for level order traversal
   queue<Node *> q;
@@ -34,10 +33,8 @@ void printLevelOrder(Node *root) {
       Node *node = q.front();
       cout << node->data << " ";
       q.pop();
-      if (node->left)
-        q.push(node->left);
-      if (node->right)
-        q.push(node->right);
+      if (node->left) q.push(node->left);
+      if (node->right) q.push(node->right);
       nodeCount--;
     }
     cout << endl;
@@ -51,8 +48,7 @@ void printLevelOrder(Node *root) {
 //              linked list
 void BSTToSortedLL(Node *root, Node **head_ref) {
   // Base cases
-  if (root == NULL)
-    return;
+  if (root == NULL) return;
 
   // Recursively convert right subtree
   BSTToSortedLL(root->right, head_ref);
@@ -62,8 +58,7 @@ void BSTToSortedLL(Node *root, Node **head_ref) {
 
   // Change left pointer of previous head
   // to point to NULL
-  if (*head_ref != NULL)
-    (*head_ref)->left = NULL;
+  if (*head_ref != NULL) (*head_ref)->left = NULL;
 
   // Change head of linked list
   *head_ref = root;
@@ -79,8 +74,7 @@ void BSTToSortedLL(Node *root, Node **head_ref) {
 //              linked list
 void SortedLLToMinHeap(Node *&root, Node *head) {
   // Base Case
-  if (head == NULL)
-    return;
+  if (head == NULL) return;
 
   // queue to store the parent nodes
   queue<Node *> q;
@@ -108,8 +102,8 @@ void SortedLLToMinHeap(Node *&root, Node *head) {
     // Also in push them into the queue so that
     // they will be parents to the future nodes
     Node *leftChild = head;
-    head = head->right;      // advance linked list to next node
-    leftChild->right = NULL; // set its right child to NULL
+    head = head->right;       // advance linked list to next node
+    leftChild->right = NULL;  // set its right child to NULL
     q.push(leftChild);
 
     // Assign the left child of parent
@@ -117,8 +111,8 @@ void SortedLLToMinHeap(Node *&root, Node *head) {
 
     if (head) {
       Node *rightChild = head;
-      head = head->right;       // advance linked list to next node
-      rightChild->right = NULL; // set its right child to NULL
+      head = head->right;        // advance linked list to next node
+      rightChild->right = NULL;  // set its right child to NULL
       q.push(rightChild);
 
       // Assign the right child of parent
