@@ -4,7 +4,7 @@
 using namespace std;
 
 // Returns length of the shortest supersequence of X and Y
-int superSeq(char *X, char *Y, int m, int n) {
+int superSeq(char* X, char* Y, int m, int n) {
   int dp[m + 1][n + 1];
 
   // Fill table in bottom up manner
