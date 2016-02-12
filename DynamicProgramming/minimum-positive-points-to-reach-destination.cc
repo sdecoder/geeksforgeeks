@@ -12,8 +12,7 @@ int minInitialPoints(int points[][C]) {
   int m = R, n = C;
 
   // Base case
-  dp[m - 1][n - 1] =
-      points[m - 1][n - 1] > 0 ? 1 : abs(points[m - 1][n - 1]) + 1;
+  dp[m - 1][n - 1] = points[m - 1][n - 1] > 0 ? 1 : abs(points[m - 1][n - 1]) + 1;
 
   // Fill last row and last column as base to fill
   // entire table
@@ -35,7 +34,6 @@ int minInitialPoints(int points[][C]) {
 
 // Driver Program
 int main() {
-
   int points[R][C] = {{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}};
   cout << "Minimum Initial Points Required: " << minInitialPoints(points);
   return 0;
