@@ -15,8 +15,8 @@ int KSmallestUsingMorris(Node *root, int k) {
   // get the kth smallest number
   int count = 0;
 
-  int ksmall = INT_MIN; // store the Kth smallest
-  Node *curr = root;    // to store the current node
+  int ksmall = INT_MIN;  // store the Kth smallest
+  Node *curr = root;     // to store the current node
 
   while (curr != NULL) {
     // Like Morris traversal if current does
@@ -29,8 +29,7 @@ int KSmallestUsingMorris(Node *root, int k) {
 
       // if count is equal to K then we found the
       // kth smallest, so store it in ksmall
-      if (count == k)
-        ksmall = curr->key;
+      if (count == k) ksmall = curr->key;
 
       // go to current's right child
       curr = curr->right;
@@ -38,8 +37,7 @@ int KSmallestUsingMorris(Node *root, int k) {
       // we create links to Inorder Successor and
       // count using these links
       Node *pre = curr->left;
-      while (pre->right != NULL && pre->right != curr)
-        pre = pre->right;
+      while (pre->right != NULL && pre->right != curr) pre = pre->right;
 
       // building links
       if (pre->right == NULL) {
@@ -60,14 +58,13 @@ int KSmallestUsingMorris(Node *root, int k) {
 
         // If count is equal to K then we found
         // the kth smallest and so store it in ksmall
-        if (count == k)
-          ksmall = curr->key;
+        if (count == k) ksmall = curr->key;
 
         curr = curr->right;
       }
     }
   }
-  return ksmall; // return the found value
+  return ksmall;  // return the found value
 }
 
 // A utility function to create a new BST node
@@ -81,8 +78,7 @@ Node *newNode(int item) {
 /* A utility function to insert a new node with given key in BST */
 Node *insert(Node *node, int key) {
   /* If the tree is empty, return a new node */
-  if (node == NULL)
-    return newNode(key);
+  if (node == NULL) return newNode(key);
 
   /* Otherwise, recur down the tree */
   if (key < node->key)
@@ -111,8 +107,7 @@ int main() {
   insert(root, 60);
   insert(root, 80);
 
-  for (int k = 1; k <= 7; k++)
-    cout << KSmallestUsingMorris(root, k) << " ";
+  for (int k = 1; k <= 7; k++) cout << KSmallestUsingMorris(root, k) << " ";
 
   return 0;
 }
