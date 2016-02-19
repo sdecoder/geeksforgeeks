@@ -9,8 +9,7 @@ int getPairsCount(int arr[], int n, int sum) {
   unordered_map<int, int> m;
 
   // Store counts of all elements in map m
-  for (int i = 0; i < n; i++)
-    m[arr[i]]++;
+  for (int i = 0; i < n; i++) m[arr[i]]++;
 
   int twice_count = 0;
 
@@ -23,8 +22,7 @@ int getPairsCount(int arr[], int n, int sum) {
     // then we need to ensure that the count is
     // decreased by one such that the (arr[i], arr[i])
     // pair is not considered
-    if (sum - arr[i] == arr[i])
-      twice_count--;
+    if (sum - arr[i] == arr[i]) twice_count--;
   }
 
   // return the half of twice_count
