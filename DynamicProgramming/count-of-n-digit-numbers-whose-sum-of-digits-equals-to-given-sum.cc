@@ -10,13 +10,11 @@ unsigned long long int lookup[101][50001];
 // function
 unsigned long long int countRec(int n, int sum) {
   // Base case
-  if (n == 0)
-    return sum == 0;
+  if (n == 0) return sum == 0;
 
   // If this subproblem is already evaluated,
   // return the evaluated value
-  if (lookup[n][sum] != -1)
-    return lookup[n][sum];
+  if (lookup[n][sum] != -1) return lookup[n][sum];
 
   // Initialize answer
   unsigned long long int ans = 0;
@@ -25,8 +23,7 @@ unsigned long long int countRec(int n, int sum) {
   // recursively count numbers beginning
   // with it
   for (int i = 0; i < 10; i++)
-    if (sum - i >= 0)
-      ans += countRec(n - 1, sum - i);
+    if (sum - i >= 0) ans += countRec(n - 1, sum - i);
 
   return lookup[n][sum] = ans;
 }
@@ -44,8 +41,7 @@ unsigned long long int finalCount(int n, int sum) {
   // Traverse through every digit from 1 to
   // 9 and count numbers beginning with it
   for (int i = 1; i <= 9; i++)
-    if (sum - i >= 0)
-      ans += countRec(n - 1, sum - i);
+    if (sum - i >= 0) ans += countRec(n - 1, sum - i);
   return ans;
 }
 
