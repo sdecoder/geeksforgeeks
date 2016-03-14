@@ -5,12 +5,12 @@ using namespace std;
 // BST Node
 struct Node {
   int key;
-  struct Node *left, *right;
+  struct Node* left, *right;
 };
 
 // This function finds predecessor and successor of key in BST.
 // It sets pre and suc as predecessor and successor respectively
-void findPreSuc(Node *root, Node *&pre, Node *&suc, int key) {
+void findPreSuc(Node* root, Node*& pre, Node*& suc, int key) {
   // Base case
   if (root == NULL) return;
 
@@ -18,14 +18,14 @@ void findPreSuc(Node *root, Node *&pre, Node *&suc, int key) {
   if (root->key == key) {
     // the maximum value in left subtree is predecessor
     if (root->left != NULL) {
-      Node *tmp = root->left;
+      Node* tmp = root->left;
       while (tmp->right) tmp = tmp->right;
       pre = tmp;
     }
 
     // the minimum value in right subtree is successor
     if (root->right != NULL) {
-      Node *tmp = root->right;
+      Node* tmp = root->right;
       while (tmp->left) tmp = tmp->left;
       suc = tmp;
     }
@@ -36,7 +36,7 @@ void findPreSuc(Node *root, Node *&pre, Node *&suc, int key) {
   if (root->key > key) {
     suc = root;
     findPreSuc(root->left, pre, suc, key);
-  } else  // go to right subtree
+  } else // go to right subtree
   {
     pre = root;
     findPreSuc(root->right, pre, suc, key);
@@ -44,15 +44,15 @@ void findPreSuc(Node *root, Node *&pre, Node *&suc, int key) {
 }
 
 // A utility function to create a new BST node
-Node *newNode(int item) {
-  Node *temp = new Node;
+Node* newNode(int item) {
+  Node* temp = new Node;
   temp->key = item;
   temp->left = temp->right = NULL;
   return temp;
 }
 
 /* A utility function to insert a new node with given key in BST */
-Node *insert(Node *node, int key) {
+Node* insert(Node* node, int key) {
   if (node == NULL) return newNode(key);
   if (key < node->key)
     node->left = insert(node->left, key);
@@ -63,7 +63,7 @@ Node *insert(Node *node, int key) {
 
 // Driver program to test above function
 int main() {
-  int key = 65;  // Key to be searched in BST
+  int key = 65; // Key to be searched in BST
 
   /* Let us create following BST
              50
@@ -71,7 +71,7 @@ int main() {
          30      70
         /  \    /  \
       20   40  60   80 */
-  Node *root = NULL;
+  Node* root = NULL;
   root = insert(root, 50);
   insert(root, 30);
   insert(root, 20);
@@ -80,7 +80,7 @@ int main() {
   insert(root, 60);
   insert(root, 80);
 
-  Node *pre = NULL, *suc = NULL;
+  Node* pre = NULL, * suc = NULL;
 
   findPreSuc(root, pre, suc, key);
   if (pre != NULL)
