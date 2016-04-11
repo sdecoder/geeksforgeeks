@@ -6,17 +6,17 @@ using namespace std;
 // A BST node
 struct Node {
   int key;
-  Node *left, *right;
+  Node* left, *right;
 };
 
 // A function to find
-int KSmallestUsingMorris(Node *root, int k) {
+int KSmallestUsingMorris(Node* root, int k) {
   // Count to iterate over elements till we
   // get the kth smallest number
   int count = 0;
 
-  int ksmall = INT_MIN;  // store the Kth smallest
-  Node *curr = root;     // to store the current node
+  int ksmall = INT_MIN; // store the Kth smallest
+  Node* curr = root;    // to store the current node
 
   while (curr != NULL) {
     // Like Morris traversal if current does
@@ -36,7 +36,7 @@ int KSmallestUsingMorris(Node *root, int k) {
     } else {
       // we create links to Inorder Successor and
       // count using these links
-      Node *pre = curr->left;
+      Node* pre = curr->left;
       while (pre->right != NULL && pre->right != curr) pre = pre->right;
 
       // building links
@@ -64,19 +64,19 @@ int KSmallestUsingMorris(Node *root, int k) {
       }
     }
   }
-  return ksmall;  // return the found value
+  return ksmall; // return the found value
 }
 
 // A utility function to create a new BST node
-Node *newNode(int item) {
-  Node *temp = new Node;
+Node* newNode(int item) {
+  Node* temp = new Node;
   temp->key = item;
   temp->left = temp->right = NULL;
   return temp;
 }
 
 /* A utility function to insert a new node with given key in BST */
-Node *insert(Node *node, int key) {
+Node* insert(Node* node, int key) {
   /* If the tree is empty, return a new node */
   if (node == NULL) return newNode(key);
 
@@ -98,7 +98,7 @@ int main() {
         30      70
        /  \    /  \
      20   40  60   80 */
-  Node *root = NULL;
+  Node* root = NULL;
   root = insert(root, 50);
   insert(root, 30);
   insert(root, 20);
