@@ -4,11 +4,13 @@
 #include <string.h>
 
 // A utility function to get minimum of two integers
-int min(int a, int b) { return (a < b) ? a : b; }
+int min(int a, int b) {
+  return (a < b) ? a : b;
+}
 
 // Returns the minimum number of cuts needed to partition a string
 // such that every part is a palindrome
-int minPalPartion(char *str) {
+int minPalPartion(char* str) {
   // Get the length of the string
   int n = strlen(str);
 
@@ -51,8 +53,7 @@ int minPalPartion(char *str) {
         // Make a cut at every possible localtion starting from i to j,
         // and get the minimum cost cut.
         C[i][j] = INT_MAX;
-        for (k = i; k <= j - 1; k++)
-          C[i][j] = min(C[i][j], C[i][k] + C[k + 1][j] + 1);
+        for (k = i; k <= j - 1; k++) C[i][j] = min(C[i][j], C[i][k] + C[k + 1][j] + 1);
       }
     }
   }
@@ -64,7 +65,6 @@ int minPalPartion(char *str) {
 // Driver program to test above function
 int main() {
   char str[] = "ababbbabbababa";
-  printf("Min cuts needed for Palindrome Partitioning is %d",
-         minPalPartion(str));
+  printf("Min cuts needed for Palindrome Partitioning is %d", minPalPartion(str));
   return 0;
 }
