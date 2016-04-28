@@ -12,8 +12,7 @@ int binomialCoeff(int n, int k) {
   for (int i = 1; i <= n; i++) {
     // Compute next row of pascal triangle using
     // the previous row
-    for (int j = min(i, k); j > 0; j--)
-      C[j] = C[j] + C[j - 1];
+    for (int j = min(i, k); j > 0; j--) C[j] = C[j] + C[j - 1];
   }
   return C[k];
 }
