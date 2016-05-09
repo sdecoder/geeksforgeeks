@@ -7,21 +7,21 @@ using namespace std;
 // A BST node
 struct Node {
   int key;
-  struct Node *left, *right;
+  struct Node* left, *right;
 };
 
 // A utility function to create a new node
-Node *newNode(int ele) {
-  Node *temp = new Node;
+Node* newNode(int ele) {
+  Node* temp = new Node;
   temp->key = ele;
   temp->left = temp->right = NULL;
   return temp;
 }
 
 // Function two print common elements in given two trees
-void printCommon(Node *root1, Node *root2) {
+void printCommon(Node* root1, Node* root2) {
   // Create two stacks for two inorder traversals
-  stack<Node *> stack1, s1, s2;
+  stack<Node*> stack1, s1, s2;
 
   while (1) {
     // push the Nodes of first tree in stack s1
@@ -78,7 +78,7 @@ void printCommon(Node *root1, Node *root2) {
 }
 
 // A utility function to do inorder traversal
-void inorder(struct Node *root) {
+void inorder(struct Node* root) {
   if (root) {
     inorder(root->left);
     cout << root->key << " ";
@@ -87,7 +87,7 @@ void inorder(struct Node *root) {
 }
 
 /* A utility function to insert a new Node with given key in BST */
-struct Node *insert(struct Node *node, int key) {
+struct Node* insert(struct Node* node, int key) {
   /* If the tree is empty, return a new Node */
   if (node == NULL) return newNode(key);
 
@@ -104,7 +104,7 @@ struct Node *insert(struct Node *node, int key) {
 // Driver program
 int main() {
   // Create first tree as shown in example
-  Node *root1 = NULL;
+  Node* root1 = NULL;
   root1 = insert(root1, 5);
   root1 = insert(root1, 1);
   root1 = insert(root1, 10);
@@ -114,7 +114,7 @@ int main() {
   root1 = insert(root1, 9);
 
   // Create second tree as shown in example
-  Node *root2 = NULL;
+  Node* root2 = NULL;
   root2 = insert(root2, 10);
   root2 = insert(root2, 7);
   root2 = insert(root2, 20);
