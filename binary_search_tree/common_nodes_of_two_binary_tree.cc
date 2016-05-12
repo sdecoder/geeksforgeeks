@@ -89,8 +89,7 @@ void inorder(struct Node *root) {
 /* A utility function to insert a new Node with given key in BST */
 struct Node *insert(struct Node *node, int key) {
   /* If the tree is empty, return a new Node */
-  if (node == NULL)
-    return newNode(key);
+  if (node == NULL) return newNode(key);
 
   /* Otherwise, recur down the tree */
   if (key < node->key)
