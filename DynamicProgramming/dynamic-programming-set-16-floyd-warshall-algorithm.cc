@@ -21,8 +21,7 @@ void floydWarshall(int graph[][V]) {
      we can say the initial values of shortest distances are based
      on shortest paths considering no intermediate vertex. */
   for (i = 0; i < V; i++)
-    for (j = 0; j < V; j++)
-      dist[i][j] = graph[i][j];
+    for (j = 0; j < V; j++) dist[i][j] = graph[i][j];
 
   /* Add all vertices one by one to the set of intermediate vertices.
     ---> Before start of a iteration, we have shortest distances between all
@@ -38,8 +37,7 @@ void floydWarshall(int graph[][V]) {
       for (j = 0; j < V; j++) {
         // If vertex k is on the shortest path from
         // i to j, then update the value of dist[i][j]
-        if (dist[i][k] + dist[k][j] < dist[i][j])
-          dist[i][j] = dist[i][k] + dist[k][j];
+        if (dist[i][k] + dist[k][j] < dist[i][j]) dist[i][j] = dist[i][k] + dist[k][j];
       }
     }
   }
@@ -50,8 +48,9 @@ void floydWarshall(int graph[][V]) {
 
 /* A utility function to print solution */
 void printSolution(int dist[][V]) {
-  printf("Following matrix shows the shortest distances"
-         " between every pair of vertices \n");
+  printf(
+      "Following matrix shows the shortest distances"
+      " between every pair of vertices \n");
   for (int i = 0; i < V; i++) {
     for (int j = 0; j < V; j++) {
       if (dist[i][j] == INF)
