@@ -9,7 +9,7 @@
 // returns the maximum sum and stores starting and ending indexes of the
 // maximum sum subarray at addresses pointed by start and finish pointers
 // respectively.
-int kadane(int *arr, int *start, int *finish, int n) {
+int kadane(int* arr, int* start, int* finish, int n) {
   // initialize sum, maxSum and
   int sum = 0, maxSum = INT_MIN, i;
 
@@ -32,8 +32,7 @@ int kadane(int *arr, int *start, int *finish, int n) {
   }
 
   // There is at-least one non-negative number
-  if (*finish != -1)
-    return maxSum;
+  if (*finish != -1) return maxSum;
 
   // Special Case: When all numbers in arr[] are negative
   maxSum = arr[0];
@@ -65,8 +64,7 @@ void findMaxSum(int M[][COL]) {
     // Set the right column for the left column set by outer loop
     for (right = left; right < COL; ++right) {
       // Calculate sum between current left and right for every row 'i'
-      for (i = 0; i < ROW; ++i)
-        temp[i] += M[i][right];
+      for (i = 0; i < ROW; ++i) temp[i] += M[i][right];
 
       // Find the maximum sum subarray in temp[]. The kadane()
       // function also sets values of start and finish.  So 'sum' is
@@ -95,10 +93,8 @@ void findMaxSum(int M[][COL]) {
 
 // Driver program to test above functions
 int main() {
-  int M[ROW][COL] = {{1, 2, -1, -4, -20},
-                     {-8, -3, 4, 2, 1},
-                     {3, 8, 10, 1, 3},
-                     {-4, -1, 1, 7, -6}};
+  int M[ROW][COL] = {
+      {1, 2, -1, -4, -20}, {-8, -3, 4, 2, 1}, {3, 8, 10, 1, 3}, {-4, -1, 1, 7, -6}};
 
   findMaxSum(M);
 
