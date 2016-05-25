@@ -19,14 +19,15 @@ int dp[R][C];
 
 // check whether mat[i][j] is a valid cell or not.
 bool isvalid(int i, int j) {
-  if (i < 0 || j < 0 || i >= R || j >= C)
-    return false;
+  if (i < 0 || j < 0 || i >= R || j >= C) return false;
   return true;
 }
 
 // Check whether current character is adjacent to previous
 // character (character processed in parent call) or not.
-bool isadjacent(char prev, char curr) { return ((curr - prev) == 1); }
+bool isadjacent(char prev, char curr) {
+  return ((curr - prev) == 1);
+}
 
 // i, j are the indices of the current cell and prev is the
 // character processed in the parent call.. also mat[i][j]
@@ -35,12 +36,10 @@ int getLenUtil(char mat[R][C], int i, int j, char prev) {
   // If this cell is not valid or current character is not
   // adjacent to previous one (e.g. d is not adjacent to b )
   // or if this cell is already included in the path than return 0.
-  if (!isvalid(i, j) || !isadjacent(prev, mat[i][j]))
-    return 0;
+  if (!isvalid(i, j) || !isadjacent(prev, mat[i][j])) return 0;
 
   // If this subproblem is already solved , return the answer
-  if (dp[i][j] != -1)
-    return dp[i][j];
+  if (dp[i][j] != -1) return dp[i][j];
 
   int ans = 0; // Initialize answer
 
@@ -65,7 +64,6 @@ int getLen(char mat[R][C], char s) {
     for (int j = 0; j < C; j++) {
       // check for each possible starting point
       if (mat[i][j] == s) {
-
         // recur for all eight adjacent cells
         for (int k = 0; k < 8; k++)
           ans = max(ans, 1 + getLenUtil(mat, i + x[k], j + y[k], s));
@@ -77,7 +75,6 @@ int getLen(char mat[R][C], char s) {
 
 // Driver program
 int main() {
-
   char mat[R][C] = {{'a', 'c', 'd'}, {'h', 'b', 'a'}, {'i', 'g', 'f'}};
 
   cout << getLen(mat, 'a') << endl;
