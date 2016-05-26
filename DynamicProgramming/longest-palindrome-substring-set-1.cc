@@ -6,15 +6,14 @@
 #include <string.h>
 
 // A utility function to print a substring str[low..high]
-void printSubStr(char *str, int low, int high) {
-  for (int i = low; i <= high; ++i)
-    printf("%c", str[i]);
+void printSubStr(char* str, int low, int high) {
+  for (int i = low; i <= high; ++i) printf("%c", str[i]);
 }
 
 // This function prints the longest palindrome substring
 // of str[].
 // It also returns the length of the longest palindrome
-int longestPalSubstr(char *str) {
+int longestPalSubstr(char* str) {
   int n = strlen(str); // get length of input string
 
   // table[i][j] will be false if substring str[i..j]
@@ -25,8 +24,7 @@ int longestPalSubstr(char *str) {
 
   // All substrings of length 1 are palindromes
   int maxLength = 1;
-  for (int i = 0; i < n; ++i)
-    table[i][i] = true;
+  for (int i = 0; i < n; ++i) table[i][i] = true;
 
   // check for sub-string of length 2.
   int start = 0;
