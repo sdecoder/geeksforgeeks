@@ -17,8 +17,7 @@ Node *newNode(int item) {
 
 // A function to find k'th largest element in a given tree.
 void kthLargestUtil(Node *root, int k, int &c) {
-  if (root == NULL || c >= k)
-    return;
+  if (root == NULL || c >= k) return;
   kthLargestUtil(root->right, k, c);
   c++;
   if (c == k) {
@@ -35,8 +34,7 @@ void kthLargest(Node *root, int k) {
 }
 
 Node *insert(Node *node, int key) {
-  if (node == NULL)
-    return newNode(key);
+  if (node == NULL) return newNode(key);
   if (key < node->key)
     node->left = insert(node->left, key);
   else if (key > node->key)
@@ -61,8 +59,7 @@ int main() {
   insert(root, 80);
 
   int c = 0;
-  for (int k = 1; k <= 7; k++)
-    kthLargest(root, k);
+  for (int k = 1; k <= 7; k++) kthLargest(root, k);
 
   return 0;
 }
