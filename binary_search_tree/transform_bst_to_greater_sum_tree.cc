@@ -22,8 +22,7 @@ struct Node *newNode(int item) {
 // visited node
 void transformTreeUtil(struct Node *root, int *sum) {
   // Base case
-  if (root == NULL)
-    return;
+  if (root == NULL) return;
 
   // Recur for right subtree
   transformTreeUtil(root->right, sum);
@@ -40,15 +39,14 @@ void transformTreeUtil(struct Node *root, int *sum) {
 
 // A wrapper over transformTreeUtil()
 void transformTree(struct Node *root) {
-  int sum = 0; // Initialize sum
+  int sum = 0;  // Initialize sum
   transformTreeUtil(root, &sum);
 }
 
 // A utility function to print indorder traversal of a
 // binary tree
 void printInorder(struct Node *root) {
-  if (root == NULL)
-    return;
+  if (root == NULL) return;
 
   printInorder(root->left);
   cout << root->data << " ";
