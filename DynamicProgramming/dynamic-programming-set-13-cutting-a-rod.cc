@@ -3,7 +3,9 @@
 #include <stdio.h>
 
 // A utility function to get the maximum of two integers
-int max(int a, int b) { return (a > b) ? a : b; }
+int max(int a, int b) {
+  return (a > b) ? a : b;
+}
 
 /* Returns the best obtainable price for a rod of length n and
    price[] as prices of different pieces */
@@ -16,8 +18,7 @@ int cutRod(int price[], int n) {
   // from the table
   for (i = 1; i <= n; i++) {
     int max_val = INT_MIN;
-    for (j = 0; j < i; j++)
-      max_val = max(max_val, price[j] + val[i - j - 1]);
+    for (j = 0; j < i; j++) max_val = max(max_val, price[j] + val[i - j - 1]);
     val[i] = max_val;
   }
 
