@@ -4,19 +4,19 @@ using namespace std;
 
 struct Node {
   int key;
-  Node *left, *right;
+  Node* left, *right;
 };
 
 // A utility function to create a new BST node
-Node *newNode(int item) {
-  Node *temp = new Node;
+Node* newNode(int item) {
+  Node* temp = new Node;
   temp->key = item;
   temp->left = temp->right = NULL;
   return temp;
 }
 
 // A function to find k'th largest element in a given tree.
-void kthLargestUtil(Node *root, int k, int &c) {
+void kthLargestUtil(Node* root, int k, int& c) {
   if (root == NULL || c >= k) return;
   kthLargestUtil(root->right, k, c);
   c++;
@@ -28,12 +28,12 @@ void kthLargestUtil(Node *root, int k, int &c) {
 }
 
 // Function to find k'th largest element
-void kthLargest(Node *root, int k) {
+void kthLargest(Node* root, int k) {
   int c = 0;
   kthLargestUtil(root, k, c);
 }
 
-Node *insert(Node *node, int key) {
+Node* insert(Node* node, int key) {
   if (node == NULL) return newNode(key);
   if (key < node->key)
     node->left = insert(node->left, key);
@@ -49,7 +49,7 @@ int main() {
         30      70
        /  \    /  \
      20   40  60   80 */
-  Node *root = NULL;
+  Node* root = NULL;
   root = insert(root, 50);
   insert(root, 30);
   insert(root, 20);
