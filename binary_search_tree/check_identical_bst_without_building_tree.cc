@@ -34,8 +34,8 @@ bool isSameBSTUtil(int a[], int b[], int n, int i1, int i2, int min, int max) {
   /* Make the current child as parent and recursively check for left and right
      subtrees of it. Note that we can also pass a[k] in place of a[j] as they
      are both are same */
-  return isSameBSTUtil(a, b, n, j + 1, k + 1, a[j], max) &&  // Right Subtree
-      isSameBSTUtil(a, b, n, j + 1, k + 1, min, a[j]);       // Left Subtree
+  return isSameBSTUtil(a, b, n, j + 1, k + 1, a[j], max) && // Right Subtree
+      isSameBSTUtil(a, b, n, j + 1, k + 1, min, a[j]);      // Left Subtree
 }
 
 // A wrapper over isSameBSTUtil()
