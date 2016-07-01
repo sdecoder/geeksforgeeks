@@ -7,8 +7,7 @@ using namespace std;
 int sumOfDigitsFrom1ToN(int n) {
   // base case: if n<10 return sum of
   // first n natural numbers
-  if (n < 10)
-    return n * (n + 1) / 2;
+  if (n < 10) return n * (n + 1) / 2;
 
   // d = number of digits minus one in n. For 328, d is 2
   int d = log10(n);
@@ -18,10 +17,9 @@ int sumOfDigitsFrom1ToN(int n) {
   // d=2 a[1]=sum of digit from 1 to 9 = 45
   // d=3 a[2]=sum of digit from 1 to 99 = a[1]*10 + 45*10^1 = 900
   // d=4 a[3]=sum of digit from 1 to 999 = a[2]*10 + 45*10^2 = 13500
-  int *a = new int[d + 1];
+  int* a = new int[d + 1];
   a[0] = 0, a[1] = 45;
-  for (int i = 2; i <= d; i++)
-    a[i] = a[i - 1] * 10 + 45 * ceil(pow(10, i - 1));
+  for (int i = 2; i <= d; i++) a[i] = a[i - 1] * 10 + 45 * ceil(pow(10, i - 1));
 
   // computing 10^d
   int p = ceil(pow(10, d));
@@ -42,14 +40,13 @@ int sumOfDigitsFrom1ToN(int n) {
   // The third term adds 3*29 to sum as digit 3 occurs in all numbers
   //                from 300 to 328
   // The fourth term recursively calls for 28
-  return msd * a[d] + (msd * (msd - 1) / 2) * p + msd * (1 + n % p) +
-         sumOfDigitsFrom1ToN(n % p);
+  return msd * a[d] + (msd * (msd - 1) / 2) * p + msd * (1 + n % p)
+      + sumOfDigitsFrom1ToN(n % p);
 }
 
 // Driver Program
 int main() {
   int n = 328;
-  cout << "Sum of digits in numbers from 1 to " << n << " is "
-       << sumOfDigitsFrom1ToN(n);
+  cout << "Sum of digits in numbers from 1 to " << n << " is " << sumOfDigitsFrom1ToN(n);
   return 0;
 }
