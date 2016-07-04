@@ -5,12 +5,12 @@ using namespace std;
 // A BST node
 struct Node {
   int data;
-  struct Node *left, *right;
+  struct Node* left, *right;
 };
 
 // A utility function to create a new Binary Tree Node
-struct Node *newNode(int item) {
-  struct Node *temp = new Node;
+struct Node* newNode(int item) {
+  struct Node* temp = new Node;
   temp->data = item;
   temp->left = temp->right = NULL;
   return temp;
@@ -20,7 +20,7 @@ struct Node *newNode(int item) {
 // This function traverses the tree in reverse inorder so
 // that we have visited all greater key nodes of the currently
 // visited node
-void transformTreeUtil(struct Node *root, int *sum) {
+void transformTreeUtil(struct Node* root, int* sum) {
   // Base case
   if (root == NULL) return;
 
@@ -38,14 +38,14 @@ void transformTreeUtil(struct Node *root, int *sum) {
 }
 
 // A wrapper over transformTreeUtil()
-void transformTree(struct Node *root) {
-  int sum = 0;  // Initialize sum
+void transformTree(struct Node* root) {
+  int sum = 0; // Initialize sum
   transformTreeUtil(root, &sum);
 }
 
 // A utility function to print indorder traversal of a
 // binary tree
-void printInorder(struct Node *root) {
+void printInorder(struct Node* root) {
   if (root == NULL) return;
 
   printInorder(root->left);
@@ -55,7 +55,7 @@ void printInorder(struct Node *root) {
 
 // Driver Program to test above functions
 int main() {
-  struct Node *root = newNode(11);
+  struct Node* root = newNode(11);
   root->left = newNode(2);
   root->right = newNode(29);
   root->left->left = newNode(1);
