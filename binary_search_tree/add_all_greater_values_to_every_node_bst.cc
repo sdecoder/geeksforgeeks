@@ -19,8 +19,7 @@ struct node *newNode(int item) {
 // Recursive function to add all greater values in every node
 void modifyBSTUtil(struct node *root, int *sum) {
   // Base Case
-  if (root == NULL)
-    return;
+  if (root == NULL) return;
 
   // Recur for right subtree
   modifyBSTUtil(root->right, sum);
@@ -52,8 +51,7 @@ void inorder(struct node *root) {
 /* A utility function to insert a new node with given data in BST */
 struct node *insert(struct node *node, int data) {
   /* If the tree is empty, return a new node */
-  if (node == NULL)
-    return newNode(data);
+  if (node == NULL) return newNode(data);
 
   /* Otherwise, recur down the tree */
   if (data <= node->data)
