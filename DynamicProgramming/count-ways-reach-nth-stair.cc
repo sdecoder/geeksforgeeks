@@ -9,14 +9,15 @@ int countWaysUtil(int n, int m) {
   res[1] = 1;
   for (int i = 2; i < n; i++) {
     res[i] = 0;
-    for (int j = 1; j <= m && j <= i; j++)
-      res[i] += res[i - j];
+    for (int j = 1; j <= m && j <= i; j++) res[i] += res[i - j];
   }
   return res[n - 1];
 }
 
 // Returns number of ways to reach s'th stair
-int countWays(int s, int m) { return countWaysUtil(s + 1, m); }
+int countWays(int s, int m) {
+  return countWaysUtil(s + 1, m);
+}
 
 // Driver program to test above functions
 int main() {
