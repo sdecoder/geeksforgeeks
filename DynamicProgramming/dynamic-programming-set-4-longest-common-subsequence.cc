@@ -4,7 +4,9 @@
 using namespace std;
 
 // Utility function to find minimum of three numbers
-int min(int x, int y, int z) { return min(min(x, y), z); }
+int min(int x, int y, int z) {
+  return min(min(x, y), z);
+}
 
 int editDistDP(string str1, string str2, int m, int n) {
   // Create a table to store results of subproblems
@@ -15,8 +17,7 @@ int editDistDP(string str1, string str2, int m, int n) {
     for (int j = 0; j <= n; j++) {
       // If first string is empty, only option is to
       // isnert all characters of second string
-      if (i == 0)
-        dp[i][j] = j; // Min. operations = j
+      if (i == 0) dp[i][j] = j; // Min. operations = j
 
       // If second string is empty, only option is to
       // remove all characters of second string
