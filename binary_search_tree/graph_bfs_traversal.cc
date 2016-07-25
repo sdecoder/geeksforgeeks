@@ -7,12 +7,12 @@ using namespace std;
 
 // This class represents a directed graph using adjacency list representation
 class Graph {
-  int V;          // No. of vertices
-  list<int> *adj; // Pointer to an array containing adjacency lists
-public:
-  Graph(int V);               // Constructor
-  void addEdge(int v, int w); // function to add an edge to graph
-  void BFS(int s);            // prints BFS traversal from a given source s
+  int V;           // No. of vertices
+  list<int> *adj;  // Pointer to an array containing adjacency lists
+ public:
+  Graph(int V);                // Constructor
+  void addEdge(int v, int w);  // function to add an edge to graph
+  void BFS(int s);             // prints BFS traversal from a given source s
 };
 
 Graph::Graph(int V) {
@@ -21,14 +21,13 @@ Graph::Graph(int V) {
 }
 
 void Graph::addEdge(int v, int w) {
-  adj[v].push_back(w); // Add w to v’s list.
+  adj[v].push_back(w);  // Add w to v’s list.
 }
 
 void Graph::BFS(int s) {
   // Mark all the vertices as not visited
   bool *visited = new bool[V];
-  for (int i = 0; i < V; i++)
-    visited[i] = false;
+  for (int i = 0; i < V; i++) visited[i] = false;
 
   // Create a queue for BFS
   list<int> queue;
