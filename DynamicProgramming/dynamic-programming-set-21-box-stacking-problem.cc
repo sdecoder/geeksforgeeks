@@ -9,17 +9,21 @@ struct Box {
 };
 
 // A utility function to get minimum of two intgers
-int min(int x, int y) { return (x < y) ? x : y; }
+int min(int x, int y) {
+  return (x < y) ? x : y;
+}
 
 // A utility function to get maximum of two intgers
-int max(int x, int y) { return (x > y) ? x : y; }
+int max(int x, int y) {
+  return (x > y) ? x : y;
+}
 
 /* Following function is needed for library function qsort(). We
    use qsort() to sort boxes in decreasing order of base area.
    Refer following link for help of qsort() and compare()
    http://www.cplusplus.com/reference/clibrary/cstdlib/qsort/ */
-int compare(const void *a, const void *b) {
-  return ((*(Box *)b).d * (*(Box *)b).w) – ((*(Box *)a).d * (*(Box *)a).w);
+int compare(const void* a, const void* b) {
+  return ((*(Box*)b).d * (*(Box*)b).w) – ((*(Box*)a).d * (*(Box*)a).w);
 }
 
 /* Returns the height of the tallest stack that can be formed with give type of
@@ -62,22 +66,19 @@ int maxStackHeight(Box arr[], int n) {
   /* Initialize msh values for all indexes
      msh[i] –> Maximum possible Stack Height with box i on top */
   int msh[n];
-  for (int i = 0; i < n; i++)
-    msh[i] = rot[i].h;
+  for (int i = 0; i < n; i++) msh[i] = rot[i].h;
 
   /* Compute optimized msh values in bottom up manner */
   for (int i = 1; i < n; i++)
     for (int j = 0; j < i; j++)
-      if (rot[i].w < rot[j].w && rot[i].d < rot[j].d &&
-          msh[i] < msh[j] + rot[i].h) {
+      if (rot[i].w < rot[j].w && rot[i].d < rot[j].d && msh[i] < msh[j] + rot[i].h) {
         msh[i] = msh[j] + rot[i].h;
       }
 
   /* Pick maximum of all msh values */
   int max = -1;
   for (int i = 0; i < n; i++)
-    if (max < msh[i])
-      max = msh[i];
+    if (max < msh[i]) max = msh[i];
 
   return max;
 }
@@ -87,8 +88,7 @@ int main() {
   Box arr[] = {{4, 6, 7}, {1, 2, 3}, {4, 5, 6}, {10, 12, 32}};
   int n = sizeof(arr) / sizeof(arr[0]);
 
-  printf("The maximum possible height of stack is %d\n",
-         maxStackHeight(arr, n));
+  printf("The maximum possible height of stack is %d\n", maxStackHeight(arr, n));
 
   return 0;
 }
