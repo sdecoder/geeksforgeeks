@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int findLength(char *str) {
+int findLength(char* str) {
   int n = strlen(str);
   int maxlen = 0; // Initialize result
 
@@ -18,8 +18,7 @@ int findLength(char *str) {
   int sum[n][n];
 
   // Fill the diagonal values for sunstrings of length 1
-  for (int i = 0; i < n; i++)
-    sum[i][i] = str[i] - '0';
+  for (int i = 0; i < n; i++) sum[i][i] = str[i] - '0';
 
   // Fill entries for substrings of length 2 to n
   for (int len = 2; len <= n; len++) {
