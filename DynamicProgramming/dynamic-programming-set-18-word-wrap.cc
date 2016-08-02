@@ -34,8 +34,7 @@ void solveWordWrap(int l[], int n, int M) {
   // placed in a single line
   for (i = 1; i <= n; i++) {
     extras[i][i] = M - l[i - 1];
-    for (j = i + 1; j <= n; j++)
-      extras[i][j] = extras[i][j - 1] - l[j - 1] - 1;
+    for (j = i + 1; j <= n; j++) extras[i][j] = extras[i][j - 1] - l[j - 1] - 1;
   }
 
   // Calculate line cost corresponding to the above calculated extra
