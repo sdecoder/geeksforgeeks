@@ -5,19 +5,19 @@ using namespace std;
 // A BST node
 struct node {
   int data;
-  struct node *left, *right;
+  struct node* left, *right;
 };
 
 // Utility function to create new node
-node *newNode(int data) {
-  node *temp = new node;
+node* newNode(int data) {
+  node* temp = new node;
   temp->data = data;
   temp->left = temp->right = NULL;
   return (temp);
 }
 
 // Returns count of nodes in BST in range [low, high]
-int getCount(node *root, int low, int high) {
+int getCount(node* root, int low, int high) {
   // Base case
   if (!root) return 0;
 
@@ -42,7 +42,7 @@ int getCount(node *root, int low, int high) {
 // Driver program
 int main() {
   // Let us construct the BST shown in the above figure
-  node *root = newNode(10);
+  node* root = newNode(10);
   root->left = newNode(5);
   root->right = newNode(50);
   root->left->left = newNode(1);
