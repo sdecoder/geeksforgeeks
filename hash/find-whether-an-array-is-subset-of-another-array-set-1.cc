@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /* Fucntion prototypes */
-void quickSort(int *arr, int si, int ei);
+void quickSort(int* arr, int si, int ei);
 int binarySearch(int arr[], int low, int high, int x);
 
 /* Return 1 if arr2[] is a subset of arr1[] */
@@ -10,8 +10,7 @@ bool isSubset(int arr1[], int arr2[], int m, int n) {
 
   quickSort(arr1, 0, m - 1);
   for (i = 0; i < n; i++) {
-    if (binarySearch(arr1, 0, m - 1, arr2[i]) == -1)
-      return 0;
+    if (binarySearch(arr1, 0, m - 1, arr2[i]) == -1) return 0;
   }
 
   /* If we reach here then all elements of arr2[]
@@ -41,7 +40,7 @@ int binarySearch(int arr[], int low, int high, int x) {
   return -1;
 }
 
-void exchange(int *a, int *b) {
+void exchange(int* a, int* b) {
   int temp;
   temp = *a;
   *a = *b;
