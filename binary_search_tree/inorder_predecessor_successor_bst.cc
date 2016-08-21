@@ -12,24 +12,21 @@ struct Node {
 // It sets pre and suc as predecessor and successor respectively
 void findPreSuc(Node *root, Node *&pre, Node *&suc, int key) {
   // Base case
-  if (root == NULL)
-    return;
+  if (root == NULL) return;
 
   // If key is present at root
   if (root->key == key) {
     // the maximum value in left subtree is predecessor
     if (root->left != NULL) {
       Node *tmp = root->left;
-      while (tmp->right)
-        tmp = tmp->right;
+      while (tmp->right) tmp = tmp->right;
       pre = tmp;
     }
 
     // the minimum value in right subtree is successor
     if (root->right != NULL) {
       Node *tmp = root->right;
-      while (tmp->left)
-        tmp = tmp->left;
+      while (tmp->left) tmp = tmp->left;
       suc = tmp;
     }
     return;
@@ -39,7 +36,7 @@ void findPreSuc(Node *root, Node *&pre, Node *&suc, int key) {
   if (root->key > key) {
     suc = root;
     findPreSuc(root->left, pre, suc, key);
-  } else // go to right subtree
+  } else  // go to right subtree
   {
     pre = root;
     findPreSuc(root->right, pre, suc, key);
@@ -56,8 +53,7 @@ Node *newNode(int item) {
 
 /* A utility function to insert a new node with given key in BST */
 Node *insert(Node *node, int key) {
-  if (node == NULL)
-    return newNode(key);
+  if (node == NULL) return newNode(key);
   if (key < node->key)
     node->left = insert(node->left, key);
   else
@@ -67,7 +63,7 @@ Node *insert(Node *node, int key) {
 
 // Driver program to test above function
 int main() {
-  int key = 65; // Key to be searched in BST
+  int key = 65;  // Key to be searched in BST
 
   /* Let us create following BST
              50
