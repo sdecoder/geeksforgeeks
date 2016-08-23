@@ -30,8 +30,7 @@ void inorder(struct node *root) {
 /* A utility function to insert a new node with given key in BST */
 struct node *insert(struct node *node, int key) {
   /* If the tree is empty, return a new node */
-  if (node == NULL)
-    return newNode(key);
+  if (node == NULL) return newNode(key);
 
   // If key already exists in BST, icnrement count and return
   if (key == node->key) {
@@ -56,8 +55,7 @@ struct node *minValueNode(struct node *node) {
   struct node *current = node;
 
   /* loop down to find the leftmost leaf */
-  while (current->left != NULL)
-    current = current->left;
+  while (current->left != NULL) current = current->left;
 
   return current;
 }
@@ -66,13 +64,11 @@ struct node *minValueNode(struct node *node) {
    deletes a given key and returns root of modified tree */
 struct node *deleteNode(struct node *root, int key) {
   // base case
-  if (root == NULL)
-    return root;
+  if (root == NULL) return root;
 
   // If the key to be deleted is smaller than the
   // root's key, then it lies in left subtree
-  if (key < root->key)
-    root->left = deleteNode(root->left, key);
+  if (key < root->key) root->left = deleteNode(root->left, key);
 
   // If the key to be deleted is greater than the root's key,
   // then it lies in right subtree
