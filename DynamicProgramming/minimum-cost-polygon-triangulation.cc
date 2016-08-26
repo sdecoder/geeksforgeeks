@@ -19,7 +19,9 @@ struct Point {
 };
 
 // Utility function to find minimum of two double values
-double min(double x, double y) { return (x <= y) ? x : y; }
+double min(double x, double y) {
+  return (x <= y) ? x : y;
+}
 
 // A utility function to find distance between two points in a plane
 double dist(Point p1, Point p2) {
@@ -37,8 +39,7 @@ double cost(Point points[], int i, int j, int k) {
 // polygon triangulation.
 double mTCDP(Point points[], int n) {
   // There must be at least 3 points to form a triangle
-  if (n < 3)
-    return 0;
+  if (n < 3) return 0;
 
   // table to store results of subproblems.  table[i][j] stores cost of
   // triangulation of points from i to j.  The entry table[0][n-1] stores
@@ -56,8 +57,7 @@ double mTCDP(Point points[], int n) {
         table[i][j] = MAX;
         for (int k = i + 1; k < j; k++) {
           double val = table[i][k] + table[k][j] + cost(points, i, j, k);
-          if (table[i][j] > val)
-            table[i][j] = val;
+          if (table[i][j] > val) table[i][j] = val;
         }
       }
     }
