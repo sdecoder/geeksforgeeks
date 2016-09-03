@@ -4,7 +4,6 @@
 
 // Matrix Ai has dimension p[i-1] x p[i] for i = 1..n
 int MatrixChainOrder(int p[], int n) {
-
   /* For simplicity of the program, one extra row and one
      extra column are allocated in m[][].  0th row and 0th
      column of m[][] are not used */
@@ -17,8 +16,7 @@ int MatrixChainOrder(int p[], int n) {
      dimension of A[i] is p[i-1] x p[i] */
 
   // cost is zero when multiplying one matrix.
-  for (i = 1; i < n; i++)
-    m[i][i] = 0;
+  for (i = 1; i < n; i++) m[i][i] = 0;
 
   // L is chain length.
   for (L = 2; L < n; L++) {
@@ -28,8 +26,7 @@ int MatrixChainOrder(int p[], int n) {
       for (k = i; k <= j - 1; k++) {
         // q = cost/scalar multiplications
         q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
-        if (q < m[i][j])
-          m[i][j] = q;
+        if (q < m[i][j]) m[i][j] = q;
       }
     }
   }
@@ -41,8 +38,7 @@ int main() {
   int arr[] = {1, 2, 3, 4};
   int size = sizeof(arr) / sizeof(arr[0]);
 
-  printf("Minimum number of multiplications is %d ",
-         MatrixChainOrder(arr, size));
+  printf("Minimum number of multiplications is %d ", MatrixChainOrder(arr, size));
 
   getchar();
   return 0;
