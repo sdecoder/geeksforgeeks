@@ -8,8 +8,7 @@ int findLongestConseqSubseq(int arr[], int n) {
   int ans = 0;
 
   // Hash all the array elements
-  for (int i = 0; i < n; i++)
-    S.insert(arr[i]);
+  for (int i = 0; i < n; i++) S.insert(arr[i]);
 
   // check each possible sequence from the start
   // then update optimal length
@@ -20,8 +19,7 @@ int findLongestConseqSubseq(int arr[], int n) {
       // Then check for next elements in the
       // sequence
       int j = arr[i];
-      while (S.find(j) != S.end())
-        j++;
+      while (S.find(j) != S.end()) j++;
 
       // update  optimal length if this length
       // is more
