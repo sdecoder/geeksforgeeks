@@ -52,10 +52,10 @@ vector<struct node *> constructTrees(int start, int end) {
       struct node *left = leftSubtree[j];
       for (int k = 0; k < rightSubtree.size(); k++) {
         struct node *right = rightSubtree[k];
-        struct node *node = newNode(i); // making value i as root
-        node->left = left;              // connect left subtree
-        node->right = right;            // connect right subtree
-        list.push_back(node);           // add this tree to list
+        struct node *node = newNode(i);  // making value i as root
+        node->left = left;               // connect left subtree
+        node->right = right;             // connect right subtree
+        list.push_back(node);            // add this tree to list
       }
     }
   }
