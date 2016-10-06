@@ -10,14 +10,14 @@ struct Interval {
 
 // Structure to represent a node in Interval Search Tree
 struct ITNode {
-  Interval *i;  // 'i' could also be a normal variable
+  Interval* i; // 'i' could also be a normal variable
   int max;
-  ITNode *left, *right;
+  ITNode* left, *right;
 };
 
 // A utility function to create a new Interval Search Tree Node
-ITNode *newNode(Interval i) {
-  ITNode *temp = new ITNode;
+ITNode* newNode(Interval i) {
+  ITNode* temp = new ITNode;
   temp->i = new Interval(i);
   temp->max = i.high;
   temp->left = temp->right = NULL;
@@ -26,7 +26,7 @@ ITNode *newNode(Interval i) {
 // A utility function to insert a new Interval Search Tree
 // Node. This is similar to BST Insert. Here the low value
 // of interval is used tomaintain BST property
-ITNode *insert(ITNode *root, Interval i) {
+ITNode* insert(ITNode* root, Interval i) {
   // Base case: Tree is empty, new node becomes root
   if (root == NULL) return newNode(i);
 
@@ -55,7 +55,7 @@ bool doOVerlap(Interval i1, Interval i2) {
 
 // The main function that searches a given interval i
 // in a given Interval Tree.
-Interval *overlapSearch(ITNode *root, Interval i) {
+Interval* overlapSearch(ITNode* root, Interval i) {
   // Base Case, tree is empty
   if (root == NULL) return NULL;
 
@@ -76,14 +76,14 @@ Interval *overlapSearch(ITNode *root, Interval i) {
 void printConflicting(Interval appt[], int n) {
   // Create an empty Interval Search Tree, add first
   // appointment
-  ITNode *root = NULL;
+  ITNode* root = NULL;
   root = insert(root, appt[0]);
 
   // Process rest of the intervals
   for (int i = 1; i < n; i++) {
     // If current appointment conflicts with any of the
     // existing intervals, print it
-    Interval *res = overlapSearch(root, appt[i]);
+    Interval* res = overlapSearch(root, appt[i]);
     if (res != NULL)
       cout << "[" << appt[i].low << "," << appt[i].high << "] Conflicts with ["
            << res->low << "," << res->high << "]\n";
