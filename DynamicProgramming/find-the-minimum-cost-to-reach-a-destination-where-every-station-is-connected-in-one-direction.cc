@@ -13,16 +13,14 @@ int minCost(int cost[][N]) {
   // dist[i] stores minimum cost to reach station i
   // from station 0.
   int dist[N];
-  for (int i = 0; i < N; i++)
-    dist[i] = INF;
+  for (int i = 0; i < N; i++) dist[i] = INF;
   dist[0] = 0;
 
   // Go through every station and check if using it
   // as an intermediate station gives better path
   for (int i = 0; i < N; i++)
     for (int j = i + 1; j < N; j++)
-      if (dist[j] > dist[i] + cost[i][j])
-        dist[j] = dist[i] + cost[i][j];
+      if (dist[j] > dist[i] + cost[i][j]) dist[j] = dist[i] + cost[i][j];
 
   return dist[N - 1];
 }
