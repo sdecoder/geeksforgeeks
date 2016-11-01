@@ -7,7 +7,7 @@ using namespace std;
 int getMinSquares(int n) {
   // Create a dynamic programming table
   // to store sq
-  int *dp = new int[n + 1];
+  int* dp = new int[n + 1];
 
   // getMinSquares table for base case entries
   dp[0] = 0;
