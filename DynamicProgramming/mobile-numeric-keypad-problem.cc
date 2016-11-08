@@ -5,10 +5,8 @@
 // Return count of all possible numbers of length n
 // in a given numeric keyboard
 int getCount(char keypad[][3], int n) {
-  if (keypad == NULL || n <= 0)
-    return 0;
-  if (n == 1)
-    return 10;
+  if (keypad == NULL || n <= 0) return 0;
+  if (n == 1) return 10;
 
   // left, up, right, down move from current location
   int row[] = {0, 0, -1, 0, 1};
@@ -48,8 +46,8 @@ int getCount(char keypad[][3], int n) {
           for (move = 0; move < 5; move++) {
             ro = i + row[move];
             co = j + col[move];
-            if (ro >= 0 && ro <= 3 && co >= 0 && co <= 2 &&
-                keypad[ro][co] != '*' && keypad[ro][co] != '#') {
+            if (ro >= 0 && ro <= 3 && co >= 0 && co <= 2 && keypad[ro][co] != '*'
+                && keypad[ro][co] != '#') {
               nextNum = keypad[ro][co] - '0';
               count[num][k] += count[nextNum][k - 1];
             }
@@ -62,13 +60,12 @@ int getCount(char keypad[][3], int n) {
   // Get count of all possible numbers of length "n" starting
   // with digit 0, 1, 2, ..., 9
   totalCount = 0;
-  for (i = 0; i <= 9; i++)
-    totalCount += count[i][n];
+  for (i = 0; i <= 9; i++) totalCount += count[i][n];
   return totalCount;
 }
 
 // Driver program to test above function
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   char keypad[4][3] = {
       {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}, {'*', '0', '#'}};
   printf("Count for numbers of length %d: %d\n", 1, getCount(keypad, 1));
