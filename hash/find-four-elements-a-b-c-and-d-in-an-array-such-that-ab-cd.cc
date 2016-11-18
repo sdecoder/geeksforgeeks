@@ -24,8 +24,8 @@ bool findPairs(int arr[], int n) {
 
         // Since array elements are distinct, we don't
         // need to check if any element is common among pairs
-        cout << "(" << arr[pp.first] << ", " << arr[pp.second] << ") and ("
-             << arr[i] << ", " << arr[j] << ")\n";
+        cout << "(" << arr[pp.first] << ", " << arr[pp.second] << ") and (" << arr[i]
+             << ", " << arr[j] << ")\n";
         return true;
       }
     }
