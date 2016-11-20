@@ -17,29 +17,25 @@ bool isSameBSTUtil(int a[], int b[], int n, int i1, int i2, int min, int max) {
      b[]. If the parent element is a leaf node then there must be some
      elements in a[] and b[] satisfying constraint. */
   for (j = i1; j < n; j++)
-    if (a[j] > min && a[j] < max)
-      break;
+    if (a[j] > min && a[j] < max) break;
   for (k = i2; k < n; k++)
-    if (b[k] > min && b[k] < max)
-      break;
+    if (b[k] > min && b[k] < max) break;
 
   /* If the parent element is leaf in both arrays */
-  if (j == n && k == n)
-    return true;
+  if (j == n && k == n) return true;
 
   /* Return false if any of the following is true
      a) If the parent element is leaf in one array, but non-leaf in other.
      b) The elements satisfying constraints are not same. We either search
         for left child or right child of the parent element (decinded by min
         and max values). The child found must be same in both arrays */
-  if (((j == n) ^ (k == n)) || a[j] != b[k])
-    return false;
+  if (((j == n) ^ (k == n)) || a[j] != b[k]) return false;
 
   /* Make the current child as parent and recursively check for left and right
      subtrees of it. Note that we can also pass a[k] in place of a[j] as they
      are both are same */
-  return isSameBSTUtil(a, b, n, j + 1, k + 1, a[j], max) && // Right Subtree
-         isSameBSTUtil(a, b, n, j + 1, k + 1, min, a[j]);   // Left Subtree
+  return isSameBSTUtil(a, b, n, j + 1, k + 1, a[j], max) &&  // Right Subtree
+      isSameBSTUtil(a, b, n, j + 1, k + 1, min, a[j]);       // Left Subtree
 }
 
 // A wrapper over isSameBSTUtil()
