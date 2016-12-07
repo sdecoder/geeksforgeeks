@@ -16,8 +16,7 @@ int optimalSearchTree(int keys[], int freq[], int n) {
      cost[0][n-1] will store the resultant cost */
 
   // For a single key, cost is equal to frequency of the key
-  for (int i = 0; i < n; i++)
-    cost[i][i] = freq[i];
+  for (int i = 0; i < n; i++) cost[i][i] = freq[i];
 
   // Now we need to consider chains of length 2, 3, ... .
   // L is chain length.
@@ -31,10 +30,9 @@ int optimalSearchTree(int keys[], int freq[], int n) {
       // Try making all keys in interval keys[i..j] as root
       for (int r = i; r <= j; r++) {
         // c = cost when keys[r] becomes root of this subtree
-        int c = ((r > i) ? cost[i][r - 1] : 0) +
-                ((r < j) ? cost[r + 1][j] : 0) + sum(freq, i, j);
-        if (c < cost[i][j])
-          cost[i][j] = c;
+        int c = ((r > i) ? cost[i][r - 1] : 0) + ((r < j) ? cost[r + 1][j] : 0)
+            + sum(freq, i, j);
+        if (c < cost[i][j]) cost[i][j] = c;
       }
     }
   }
@@ -44,8 +42,7 @@ int optimalSearchTree(int keys[], int freq[], int n) {
 // A utility function to get sum of array elements freq[i] to freq[j]
 int sum(int freq[], int i, int j) {
   int s = 0;
-  for (int k = i; k <= j; k++)
-    s += freq[k];
+  for (int k = i; k <= j; k++) s += freq[k];
   return s;
 }
 
