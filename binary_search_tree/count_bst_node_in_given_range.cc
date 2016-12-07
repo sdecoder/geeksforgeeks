@@ -19,18 +19,15 @@ node *newNode(int data) {
 // Returns count of nodes in BST in range [low, high]
 int getCount(node *root, int low, int high) {
   // Base case
-  if (!root)
-    return 0;
+  if (!root) return 0;
 
   // Special Optional case for improving efficiency
-  if (root->data == high && root->data == low)
-    return 1;
+  if (root->data == high && root->data == low) return 1;
 
   // If current node is in range, then include it in count and
   // recur for left and right children of it
   if (root->data <= high && root->data >= low)
-    return 1 + getCount(root->left, low, high) +
-           getCount(root->right, low, high);
+    return 1 + getCount(root->left, low, high) + getCount(root->right, low, high);
 
   // If current node is smaller than low, then recur for right
   // child
@@ -59,7 +56,6 @@ int main() {
   1       40   100   */
   int l = 5;
   int h = 45;
-  cout << "Count of nodes between [" << l << ", " << h << "] is "
-       << getCount(root, l, h);
+  cout << "Count of nodes between [" << l << ", " << h << "] is " << getCount(root, l, h);
   return 0;
 }
