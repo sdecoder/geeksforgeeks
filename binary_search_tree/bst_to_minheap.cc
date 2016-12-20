@@ -7,30 +7,30 @@ using namespace std;
 // Node for BST/Min-Heap
 struct Node {
   int data;
-  Node *left, *right;
+  Node* left, *right;
 };
 
 // Utility function for allocating node for BST
-Node *newNode(int data) {
-  Node *node = new Node;
+Node* newNode(int data) {
+  Node* node = new Node;
   node->data = data;
   node->left = node->right = NULL;
   return node;
 }
 
 // Utility function to print Min-heap level by level
-void printLevelOrder(Node *root) {
+void printLevelOrder(Node* root) {
   // Base Case
   if (root == NULL) return;
 
   // Create an empty queue for level order traversal
-  queue<Node *> q;
+  queue<Node*> q;
   q.push(root);
 
   while (!q.empty()) {
     int nodeCount = q.size();
     while (nodeCount > 0) {
-      Node *node = q.front();
+      Node* node = q.front();
       cout << node->data << " ";
       q.pop();
       if (node->left) q.push(node->left);
@@ -46,7 +46,7 @@ void printLevelOrder(Node *root) {
 // root     --> Root of Binary Search Tree
 // head_ref --> Pointer to head node of created
 //              linked list
-void BSTToSortedLL(Node *root, Node **head_ref) {
+void BSTToSortedLL(Node* root, Node** head_ref) {
   // Base cases
   if (root == NULL) return;
 
@@ -72,12 +72,12 @@ void BSTToSortedLL(Node *root, Node **head_ref) {
 // root --> Root of Min-Heap
 // head --> Pointer to head node of sorted
 //              linked list
-void SortedLLToMinHeap(Node *&root, Node *head) {
+void SortedLLToMinHeap(Node*& root, Node* head) {
   // Base Case
   if (head == NULL) return;
 
   // queue to store the parent nodes
-  queue<Node *> q;
+  queue<Node*> q;
 
   // The first node is always the root node
   root = head;
@@ -94,25 +94,25 @@ void SortedLLToMinHeap(Node *&root, Node *head) {
   // run until the end of linked list is reached
   while (head) {
     // Take the parent node from the q and remove it from q
-    Node *parent = q.front();
+    Node* parent = q.front();
     q.pop();
 
     // Take next two nodes from the linked list and
     // Add them as children of the current parent node
     // Also in push them into the queue so that
     // they will be parents to the future nodes
-    Node *leftChild = head;
-    head = head->right;       // advance linked list to next node
-    leftChild->right = NULL;  // set its right child to NULL
+    Node* leftChild = head;
+    head = head->right;      // advance linked list to next node
+    leftChild->right = NULL; // set its right child to NULL
     q.push(leftChild);
 
     // Assign the left child of parent
     parent->left = leftChild;
 
     if (head) {
-      Node *rightChild = head;
-      head = head->right;        // advance linked list to next node
-      rightChild->right = NULL;  // set its right child to NULL
+      Node* rightChild = head;
+      head = head->right;       // advance linked list to next node
+      rightChild->right = NULL; // set its right child to NULL
       q.push(rightChild);
 
       // Assign the right child of parent
@@ -123,9 +123,9 @@ void SortedLLToMinHeap(Node *&root, Node *head) {
 
 // Function to convert BST into a Min-Heap
 // without using any extra space
-Node *BSTToMinHeap(Node *&root) {
+Node* BSTToMinHeap(Node*& root) {
   // head of Linked List
-  Node *head = NULL;
+  Node* head = NULL;
 
   // Convert a given BST to Sorted Linked List
   BSTToSortedLL(root, &head);
@@ -145,7 +145,7 @@ int main() {
         2    6 10   14
    */
 
-  Node *root = newNode(8);
+  Node* root = newNode(8);
   root->left = newNode(4);
   root->right = newNode(12);
   root->right->left = newNode(10);
