@@ -2,7 +2,9 @@
 #include <stdio.h>
 
 // A utility function to get maximum of two integers
-int max(int a, int b) { return (a > b) ? a : b; }
+int max(int a, int b) {
+  return (a > b) ? a : b;
+}
 
 /* Function to get minimum number of trails needed in worst
   case with n eggs and k floors */
@@ -20,8 +22,7 @@ int eggDrop(int n, int k) {
   }
 
   // We always need j trials for one egg and j floors.
-  for (j = 1; j <= k; j++)
-    eggFloor[1][j] = j;
+  for (j = 1; j <= k; j++) eggFloor[1][j] = j;
 
   // Fill rest of the entries in table using optimal substructure
   // property
@@ -30,8 +31,7 @@ int eggDrop(int n, int k) {
       eggFloor[i][j] = INT_MAX;
       for (x = 1; x <= j; x++) {
         res = 1 + max(eggFloor[i - 1][x - 1], eggFloor[i][j - x]);
-        if (res < eggFloor[i][j])
-          eggFloor[i][j] = res;
+        if (res < eggFloor[i][j]) eggFloor[i][j] = res;
       }
     }
   }
@@ -43,8 +43,9 @@ int eggDrop(int n, int k) {
 /* Driver program to test to pront printDups*/
 int main() {
   int n = 2, k = 36;
-  printf("\nMinimum number of trials in worst case with %d eggs and "
-         "%d floors is %d \n",
-         n, k, eggDrop(n, k));
+  printf(
+      "\nMinimum number of trials in worst case with %d eggs and "
+      "%d floors is %d \n",
+      n, k, eggDrop(n, k));
   return 0;
 }
