@@ -3,17 +3,18 @@
 #include <string.h>
 
 // A utility function to get max of two integers
-int max(int x, int y) { return (x > y) ? x : y; }
+int max(int x, int y) {
+  return (x > y) ? x : y;
+}
 
 // Returns the length of the longest palindromic subsequence in seq
-int lps(char *str) {
+int lps(char* str) {
   int n = strlen(str);
   int i, j, cl;
   int L[n][n]; // Create a table to store results of subproblems
 
   // Strings of length 1 are palindrome of lentgh 1
-  for (i = 0; i < n; i++)
-    L[i][i] = 1;
+  for (i = 0; i < n; i++) L[i][i] = 1;
 
   // Build the table. Note that the lower diagonal values of table are
   // useless and not filled in the process. The values are filled in a
